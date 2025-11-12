@@ -11,6 +11,17 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+      
+      - name: 自增版本号
+        run: |
+          # 取当前版本
+          OLD=$(jq -r .version package.json)
+          # 补丁位 +1
+          IFS='.' read -r major minor patch <<< "$OLD"
+          NEW="${major}.${minor}.$(date +%s)"
+          # 写回 package.json
+          jq --arg v "$NEW" '.version = $v' package.json > tmp && mv tmp package.json
+          echo "版本已自增 => $NEW"
           
       - run: yarn
       - run: yarn build
