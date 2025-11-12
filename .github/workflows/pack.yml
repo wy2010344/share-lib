@@ -29,7 +29,9 @@ jobs:
 
       - name: trigger A/B
         run: |
-          gh api repos/wy2010344/web-1/dispatches -f event_type=lib-update --debug
-          gh api repos/wy2010344/web-2/dispatches -f event_type=lib-update --debug
+          export GH_DEBUG=true           # 显示请求详情
+          export GH_DEBUG=api            # 只打印 HTTP 请求/响应头体
+          gh api repos/wy2010344/web-1/dispatches -f event_type=lib-update
+          gh api repos/wy2010344/web-2/dispatches -f event_type=lib-update
         env:
           GH_TOKEN: ${{ secrets.PAT  }}
