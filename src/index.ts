@@ -1,3 +1,3 @@
 export function fn(counter: number) {
-  return 'Hello, tsdown!' + counter
+  return 'new update from dev!' + counter
 }
