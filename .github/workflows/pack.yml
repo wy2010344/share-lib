@@ -13,8 +13,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - run: yarn
       - run: yarn build
-      - run: yarn pack --pack-destination /tmp        # 先让 npm 把包生成到 /tmp
-      - run: mv /tmp/*.tgz ./share-lib.tgz  
+      - run: yarn pack --out share-lib.tgz       # 先让 npm 把包生成到 /tmp
       
       - name: upload to release
         uses: softprops/action-gh-release@v2
