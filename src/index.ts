@@ -1,3 +1,3 @@
-export function fn() {
-  return 'Hello, tsdown!'
+export function fn(counter: number) {
+  return 'Hello, tsdown!' + counter
 }
