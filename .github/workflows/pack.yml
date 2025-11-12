@@ -25,3 +25,9 @@ jobs:
           fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: trigger A/B
+      run: |
+        gh api repos/wy2010344/web-1/dispatches -f event_type=lib-update
+      env:
+        GH_TOKEN: ${{ secrets.PAT }}
